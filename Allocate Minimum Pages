@@ -1,0 +1,48 @@
+class Solution {
+public:
+    bool allocation(int arr[], int n, int m, int mid) {
+        int pagesum = 0;
+        int studentcount = 1; // Start with one student
+
+        for (int i = 0; i < n; i++) {
+            // If the current book has more pages than allowed, return false
+            if (arr[i] > mid) {
+                return false;
+            }
+            // If adding this book exceeds mid, allocate to the next student
+            if (pagesum + arr[i] > mid) {
+                studentcount++;
+                pagesum = arr[i]; // Start new student allocation with this book
+
+                // If students exceed the limit, return false
+                if (studentcount > m) {
+                    return false;
+                }
+            } else {
+                pagesum += arr[i]; // Add to current student's pages
+            }
+        }
+        return true; // Allocation possible within the current mid
+    }
+
+    // Function to find minimum number of pages.
+    long long findPages(int n, int arr[], int m) {
+        // If there are more students than books, allocation isn't possible
+        if (m > n) return -1;
+
+        int s = 0; // Start of the search range
+        int e = std::accumulate(arr, arr + n, 0); // End of the search range
+        long long ans = -1;
+
+        while (s <= e) {
+            int mid = s + (e - s) / 2; // Midpoint of current range
+            if (allocation(arr, n, m, mid)) {
+                ans = mid; // Possible to allocate with mid pages
+                e = mid - 1; // Try for fewer pages
+            } else {
+                s = mid + 1; // Try for more pages
+            }
+        }
+        return ans; // Return the minimum pages
+    }
+};
