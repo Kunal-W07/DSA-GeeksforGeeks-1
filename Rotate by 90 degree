@@ -1,2 +1,17 @@
-Rotate by 90 degree
-
+ to change it in place without using extra space */
+void rotate(vector<vector<int> >& mat) {
+    int r = mat.size();
+    int c = mat[0].size();
+    
+    //step 1 use transpost matrix meas swap [0,1] to [1,0];
+    
+    for(int i=0; i<r; i++){
+        for(int j=i; j<c; j++){
+            swap(mat[i][j],mat[j][i]);
+        }
+    }
+    //step 2 reverse array in row wise
+    for(int i=0; i<r; i++){
+        reverse(mat[i].begin(),mat[i].end());
+    }
+}
