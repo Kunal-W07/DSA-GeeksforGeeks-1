@@ -1,0 +1,18 @@
+
+class Solution {
+  public:
+    bool matSearch(vector<vector<int>> &mat, int x) {
+
+int rowsize = mat.size();
+         int colsize = mat[0].size();
+        
+        for(int i=0; i<rowsize; i++){
+            for(int j = 0; j<colsize; j++){
+                if(mat[i] [j]==x){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
