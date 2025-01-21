@@ -1,0 +1,43 @@
+class Solution {
+  public:
+  
+    bool kokospeed(vector<int>& arr, int k, int ans){
+        long long int totaltime = 0;
+        for(int i=0; i<arr.size(); i++){
+            totaltime +=  ceil((arr[i]/(double)ans));
+            //ceil() method used to round thr value if 3.3 round in 4
+        }
+        if(totaltime <= k){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+  
+  
+    int kokoEat(vector<int>& arr, int k) {
+        
+        int s = 1;
+        auto it = max_element(arr.begin(),arr.end());
+        int e = *it;
+        int finalans = -1;
+        
+        while(s<=e){
+            int mid = s+(e-s) / 2;
+            int ans = mid;
+            if(kokospeed(arr,k,ans)){
+                
+                finalans = ans;
+                e = mid-1;
+                
+            }else{
+                s = mid + 1;
+            }
+        }
+        return finalans;
+        
+        
+    }
+};
