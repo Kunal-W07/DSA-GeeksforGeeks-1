@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    string reverseString(string& s) {
+        
+        int n = s.length();
+        
+        int i = 0;
+        int j = n-1;
+        // two ponter approch
+        while(i<j){
+            swap(s[i],s[j]);
+                i++;
+                j--;
+            
+        }
+        return s;
+    }
+};
