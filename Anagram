@@ -1,0 +1,84 @@
+class Solution {
+  public:
+    // Function is to check whether two strings are anagram of each other or not.
+    bool areAnagrams(string& s1, string& s2) {
+        
+        // approach 1 using sorting
+        
+        // sort(s1.begin(), s1.end());
+        // sort(s2.begin(), s2.end());
+        
+        // if(s1==s2){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
+        
+        
+          // approach 2 using virtual hash and type casting
+        
+       int hash[256] = {0};  // Initialize an array of size 256 with all zeros (for ASCII characters)
+
+     // Count characters in s1
+     for(int i = 0; i < s1.size(); i++){
+        hash[s1[i]]++;  // Increase the count of the character in hash
+     }
+
+// Subtract characters in s2
+for(int i = 0; i < s2.size(); i++){
+    hash[s2[i]]--;  // Decrease the count of the character in hash
+}
+
+// Check if all values in hash are zero
+for(int i = 0; i < 256; i++){
+    if(hash[i] != 0){
+        return false;  // If any character count is not zero, it's not an anagram
+    }
+}
+
+return true;  // If all character counts are zero, s1 and s2 are anagrams
+    }
+};
+
+dry run****************
+
+The numbers 115, 105, etc., come from the ASCII values of characters in the string. Let's break it down clearly.
+
+ASCII Table Reference
+Every character has a corresponding ASCII value. Here are the ASCII values for the characters in "listen":
+
+Character	ASCII Value
+'l'	108
+'i'	105
+'s'	115
+'t'	116
+'e'	101
+'n'	110
+Since the hash array is declared as:
+
+cpp
+Copy
+Edit
+int hash[256] = {0};
+This means we have an array where each index represents an ASCII character.
+
+Step-by-Step Breakdown of Counting
+First loop (counting characters in s1 = "listen")
+Each character increments the corresponding ASCII index in the hash array.
+
+'l' → hash[108]++ → hash[108] = 1
+'i' → hash[105]++ → hash[105] = 1
+'s' → hash[115]++ → hash[115] = 1
+'t' → hash[116]++ → hash[116] = 1
+'e' → hash[101]++ → hash[101] = 1
+'n' → hash[110]++ → hash[110] = 1
+
+Second loop (subtracting characters in s2 = "silent")
+Each character decrements the corresponding ASCII index.
+
+'s' → hash[115]-- → hash[115] = 0
+'i' → hash[105]-- → hash[105] = 0
+'l' → hash[108]-- → hash[108] = 0
+'e' → hash[101]-- → hash[101] = 0
+'n' → hash[110]-- → hash[110] = 0
+'t' → hash[116]-- → hash[116] = 0
