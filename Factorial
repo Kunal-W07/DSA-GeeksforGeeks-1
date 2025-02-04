@@ -1,0 +1,15 @@
+class Solution {
+  public:
+  int fac(int n){
+      if(n==0 || n==1){
+          return 1;
+      }
+      int recans = fac(n-1);
+      int ans = n * recans;
+      return ans;
+  }
+    int factorial(int n) {
+        int finalans = fac(n);
+        return finalans;
+    }
+};
