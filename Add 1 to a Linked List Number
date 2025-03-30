@@ -1,0 +1,46 @@
+class Solution {
+public:
+    // Function to reverse a linked list
+    Node* reverse(Node* head) {
+        Node* prev = NULL;
+        Node* curr = head;
+
+        while (curr != NULL) {
+            Node* forward = curr->next; // Fix: Corrected "forwared" to "forward"
+            curr->next = prev;
+            prev = curr;
+            curr = forward;
+        }
+        return prev; // Fix: Return the new head after reversal
+    }
+
+    Node* addOne(Node* head) {
+        // Step 1: Reverse the linked list
+        head = reverse(head);
+
+        // Step 2: Perform addition
+        int carry = 1;
+        Node* temp = head;
+
+        while (temp != NULL) {
+            int sum = carry + temp->data;
+
+            int lastdigit = sum % 10;
+            carry = sum / 10; // Fix: Carry should be sum / 10, not sum % 10
+
+            temp->data = lastdigit; // Fix: Missing semicolon
+
+            if (temp->next == NULL && carry != 0) {
+                Node* newNode = new Node(carry);
+                temp->next = newNode;
+                temp = newNode;
+            }
+
+            temp = temp->next;
+        }
+
+        // Step 3: Reverse the list back
+        head = reverse(head);
+        return head;
+    }
+};
