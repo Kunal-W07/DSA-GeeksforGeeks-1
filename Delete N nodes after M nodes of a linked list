@@ -1,0 +1,29 @@
+if (!head) return NULL;
+
+        Node* it = head;
+
+        // Skip m nodes
+        for (int i = 1; i < m && it != NULL; i++) {
+            it = it->next;
+        }
+
+        if (it == NULL || it->next == NULL) {
+            return head;
+        }
+
+        Node* Mnode = it;
+        Node* temp = it->next;
+
+        // Delete next n nodes
+        for (int i = 0; i < n && temp != NULL; i++) {
+            Node* del = temp;
+            temp = temp->next;
+            delete del;
+        }
+
+        Mnode->next = temp;
+
+        // Recursive call
+        linkdelete(temp, n, m);
+
+        return head;
