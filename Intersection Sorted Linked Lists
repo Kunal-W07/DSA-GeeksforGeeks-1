@@ -1,0 +1,35 @@
+class Solution {
+  public:
+    Node* findIntersection(Node* head1, Node* head2) {
+        unordered_map<int, int> mapp;
+        Node* temp = head2;
+
+        // Store frequency of elements in head2
+        while (temp) {
+            mapp[temp->data]++;
+            temp = temp->next;
+        }
+
+        Node* ans = NULL;
+        Node* it = NULL; // changed from int to Node*
+        Node* temp2 = head1;
+
+        while (temp2) {
+            // Check if element is in map and count > 0
+            if (mapp.find(temp2->data) != mapp.end() && mapp[temp2->data] > 0) {
+                Node* newNode = new Node(temp2->data); // create a new node to avoid changing original list
+                if (!ans) {
+                    ans = newNode;
+                    it = ans;
+                } else {
+                    it->next = newNode;
+                    it = it->next;
+                }
+                mapp[temp2->data]--;
+            }
+            temp2 = temp2->next; // 🔧 was `temp->next`, should be `temp2->next`
+        }
+
+        return ans;
+    }
+};
