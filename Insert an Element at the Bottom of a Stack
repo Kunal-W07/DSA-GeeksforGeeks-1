@@ -1,0 +1,28 @@
+class Solution{
+public:
+    void inserinbottom(stack<int> &s,int x){
+        //base condition
+        if(s.empty()){
+            s.push(x);
+            return;
+        }
+        
+        // 1 case hum solve karege or baki ka recusion
+        
+        int topElement = s.top();
+        s.pop();
+        
+        
+        inserinbottom(s,x);
+        //backtrack
+        s.push(topElement);
+        
+        
+    }
+
+    stack<int> insertAtBottom(stack<int> s,int x){
+        
+        inserinbottom(s,x);
+        return s;
+    }
+};
