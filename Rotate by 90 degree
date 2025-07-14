@@ -1,4 +1,33 @@
- to change it in place without using extra space */
+class Solution {
+  public:
+    void rotateMatrix(vector<vector<int>>& mat) {
+        // code here
+        int r = mat.size();
+        int c = mat[0].size();
+
+        for(int i=0; i<r; i++){
+            for(int j=i; j<c; j++){
+                swap(mat[i][j],mat[j][i]);
+            }
+        }
+        
+        // reverse col wise
+       for(int j = 0; j < c; j++) {
+            int top = 0, bottom = r - 1;
+            while(top < bottom) {
+                swap(mat[top][j], mat[bottom][j]);
+                top++;
+                bottom--;
+            }
+        }
+    }
+};
+
+
+
+
+
+to change it in place without using extra space */
 void rotate(vector<vector<int> >& mat) {
     int r = mat.size();
     int c = mat[0].size();
