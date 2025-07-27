@@ -1,0 +1,33 @@
+class Solution {
+  public:
+    void cleanAndLowercase(string &s, string &ans) {
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s[i];
+            if (isalnum(ch)) { // keep only letters and digits
+                if (ch >= 'A' && ch <= 'Z') {
+                    ch = ch - 'A' + 'a'; // to lowercase
+                }
+                ans += ch;
+            }
+        }
+    }
+
+    bool isPalindrome(string &ans) {
+        int i = 0;
+        int j = ans.length() - 1;
+        while (i <= j) {
+            if (ans[i] != ans[j]) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+
+    bool sentencePalindrome(string &s) {
+        string ans = "";
+        cleanAndLowercase(s, ans);
+        return isPalindrome(ans);
+    }
+};
