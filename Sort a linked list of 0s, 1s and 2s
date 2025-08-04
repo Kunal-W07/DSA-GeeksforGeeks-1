@@ -167,3 +167,158 @@ int main() {
     return 0;
 }
 // } Driver Code Ends
+
+// aproch two 
+/*  Node is defined as
+  struct Node {
+    int data;
+    struct Node *next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};*/
+class Solution {
+  public:
+   
+    Node* segregate(Node* head) {
+        // code here
+        int zero = 0;
+        int one = 0;
+        int two = 0;
+        
+        Node* temp = head;
+        
+        while(temp != NULL){
+            if(temp->data == 0){
+                zero++;
+                temp = temp->next;
+            }
+            else if(temp->data == 1){
+                one++;
+                temp = temp->next;
+            }
+            else if(temp->data == 2){
+                two++;
+                temp = temp->next;
+            }
+        }
+        
+         // Step 2: Overwrite node values in the original list
+      /*  Node is defined as
+  struct Node {
+    int data;
+    struct Node *next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};*/
+class Solution {
+  public:
+   
+    Node* segregate(Node* head) {
+        // code here
+        int zero = 0;
+        int one = 0;
+        int two = 0;
+        
+        Node* temp = head;
+        
+        while(temp != NULL){
+            if(temp->data == 0){
+                zero++;
+                temp = temp->next;
+            }
+            else if(temp->data == 1){
+                one++;
+                temp = temp->next;
+            }
+            else if(temp->data == 2){
+                two++;
+                temp = temp->next;
+            }
+        }
+        
+         // Step 2: Overwrite node values in the original list
+       /*  Node is defined as
+  struct Node {
+    int data;
+    struct Node *next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};*/
+class Solution {
+  public:
+   
+    Node* segregate(Node* head) {
+        // code here
+        int zero = 0;
+        int one = 0;
+        int two = 0;
+        
+        Node* temp = head;
+        
+        while(temp != NULL){
+            if(temp->data == 0){
+                zero++;
+                temp = temp->next;
+            }
+            else if(temp->data == 1){
+                one++;
+                temp = temp->next;
+            }
+            else if(temp->data == 2){
+                two++;
+                temp = temp->next;
+            }
+        }
+        
+         // Step 2: Overwrite node values in the original list
+     class Solution {
+  public:
+   
+    Node* segregate(Node* head) {
+        // code here
+        int zero = 0;
+        int one = 0;
+        int two = 0;
+        
+        Node* temp = head;
+        
+        while(temp != NULL){
+            if(temp->data == 0){
+                zero++;
+                temp = temp->next;
+            }
+            else if(temp->data == 1){
+                one++;
+                temp = temp->next;
+            }
+            else if(temp->data == 2){
+                two++;
+                temp = temp->next;
+            }
+        }
+        
+         // Step 2: Overwrite node values in the original list
+        temp = head;
+        while (zero--) {
+            temp->data = 0;
+            temp = temp->next;
+        }
+        while (one--) {
+            temp->data = 1;
+            temp = temp->next;
+        }
+        while (two--) {
+            temp->data = 2;
+            temp = temp->next;
+        }
+
+        return head;
+    }
+
+      
