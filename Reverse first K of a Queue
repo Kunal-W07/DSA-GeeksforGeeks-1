@@ -1,0 +1,44 @@
+class Solution {
+  public:
+    void reverseKgroup(queue<int> &q, int k,int count){
+        
+            stack<int>s;
+            
+            for(int i=0; i<k; i++){
+                int element = q.front();
+                q.pop();
+                
+                s.push(element);
+            }
+            
+            for(int i=0; i<k; i++){
+                int element = s.top();
+                s.pop();
+                
+                q.push(element);
+            }
+            //reverseKgroup(q,k,count-k);
+        
+       
+            for(int i=0; i<count-k; i++){
+                int element = q.front();
+                q.pop();
+                
+                q.push(element);
+            }
+        
+    }
+  
+    queue<int> reverseFirstK(queue<int> q, int k) {
+        // code here
+        
+        
+        int count = q.size();
+        
+        if(count < k){
+            return q;
+        }
+        reverseKgroup(q,k,count);
+        return q;
+    }
+};
